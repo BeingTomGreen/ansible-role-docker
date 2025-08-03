@@ -24,7 +24,7 @@ You can then install it alongside your other requirements as normal:
 ansible-galaxy install -r requirements.yml
 ```
 
-You're free to use it within your project:
+You're then free to use it within your project:
 
 ```yaml
 ---
