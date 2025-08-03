@@ -1,0 +1,14 @@
+---
+
+
+- name: Ensure old Docker packages are removed
+  ansible.builtin.apt:
+    name: "{{ docker_remove_old_packages }}"
+    state: absent
+
+- name: Ensure Docker packages are present
+  ansible.builtin.apt:
+    name: "{{ docker_packages }}"
+    update_cache: true
+    state: present
+  notify: Restart Docker

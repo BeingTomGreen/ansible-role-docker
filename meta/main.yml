@@ -1,0 +1,22 @@
+---
+
+galaxy_info:
+  author: Tom Green
+  description: A really simple role for running installing and configuring Docker on Ubuntu/Debian based systems.
+
+  role_name: docker
+  namespace: beingtomgreen
+  standalone: true
+
+  license: MIT
+
+  min_ansible_version: '2.12'
+
+  galaxy_tags:
+    - containers
+    - docker
+    - compose
+
+dependencies: []
+
+collections: []

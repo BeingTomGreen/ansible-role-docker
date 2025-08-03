@@ -1,0 +1,38 @@
+---
+
+# The edition of Docker you want to install
+docker_edition: 'ce'
+
+# The release channel you want to use
+docker_release_channel: 'stable'
+
+# The Docker repo URL
+docker_repository_url: 'https://download.docker.com/linux/ubuntu'
+
+# The Docker Key URL
+docker_key_url: 'https://download.docker.com/linux/ubuntu/gpg'
+
+docker_package_dependencies:
+  - 'apt-transport-https'
+  - 'ca-certificates'
+
+# The Docker packages to install
+docker_packages:
+  - "docker-{{ docker_edition }}"
+  - "docker-{{ docker_edition }}-cli"
+  - 'containerd.io'
+  - 'docker-buildx-plugin'
+  - 'docker-compose-plugin'
+
+# Per the docs, we'll ensure these aren't present
+docker_remove_old_packages:
+  - 'docker.io'
+  - 'docker-doc'
+  - 'docker-compose'
+  - 'docker-compose-v2'
+  - 'podman-docker'
+  - 'containerd'
+  - 'runc'
+
+# List of users to add to the docker group
+docker_users: []

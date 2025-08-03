@@ -1,0 +1,6 @@
+---
+
+- name: Ensure Docker dependencies are present
+  ansible.builtin.apt:
+    name: "{{ docker_package_dependencies }}"
+    state: present

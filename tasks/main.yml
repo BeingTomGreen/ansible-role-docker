@@ -1,0 +1,22 @@
+---
+
+- name: Ensure our Docker dependencies are present
+  ansible.builtin.import_tasks: dependencies.yml
+
+- name: Configure Docker repositories
+  ansible.builtin.import_tasks: repositories.yml
+
+- name: Ensure our Docker packages are installed
+  ansible.builtin.import_tasks: packages.yml
+
+- name: Ensure our users are added to the docker group
+  ansible.builtin.import_tasks: users.yml
+  when: docker_users | length > 0
+
+# @see https://www.jeffgeerling.com/blog/2021/allowing-ansible-playbooks-work-new-user-groups-on-first-run
+# I did try doing this only when the ansible_user is changed, but it ended up being a PITA
+- name: Reset connection
+  ansible.builtin.meta: reset_connection
+
+- name: Flush handlers to avoid firewall conflicts
+  ansible.builtin.meta: flush_handlers

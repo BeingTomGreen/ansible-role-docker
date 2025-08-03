@@ -1,0 +1,12 @@
+---
+
+- name: Ensure Docker repository is present
+  ansible.builtin.deb822_repository:
+    name: docker
+    state: present
+    types: [deb]
+    uris: "{{ docker_repository_url }}"
+    suites: "{{ ansible_distribution_release }}"
+    components: "{{ docker_release_channel }}"
+    signed_by: "{{ docker_key_url }}"
+    enabled: true
