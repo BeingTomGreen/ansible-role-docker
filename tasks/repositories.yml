@@ -6,7 +6,7 @@
     state: present
     types: [deb]
     uris: "{{ docker_repository_url }}"
-    suites: "{{ ansible_distribution_release }}"
+    suites: "{{ ansible_facts['distribution_release'] }}"
     components: "{{ docker_release_channel }}"
     signed_by: "{{ docker_key_url }}"
     enabled: true
